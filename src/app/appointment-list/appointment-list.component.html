@@ -1,0 +1,27 @@
+<h5>Add Appointment</h5>
+<div class="input-group mb-3">
+  <span class="input-group-text">Appointment</span>
+  <input
+    type="text" class="form-control" placeholder="Add Appointment" [(ngModel)]="newAppointmentTitle">
+  <input type="date" class="form-control" [(ngModel)]="newAppointmentDate">
+  <button class="btn btn-primary" (click)="addAppointment()">Add</button>
+</div>
+
+<h5>Appointments List</h5>
+<ul class="list-group">
+  <li
+    *ngFor="let appointment of appointments; let i = index"
+    class="list-group-item d-flex justify-content-between align-items-center"
+  >
+    <div>
+      <div class="lead fw-medium"> {{appointment.title}}</div>
+      <small>
+        <i class="bi bi-calendar-event me-1"></i> {{appointment.date | date: 'dd.MM.yyyy'}}
+      </small>
+    </div>
+    <button class="btn btn-danger" (click)="deleteAppointment(i)">
+      <i class="bi bi-trash2-fill"></i> Delete
+    </button>
+  </li>
+</ul>
+
